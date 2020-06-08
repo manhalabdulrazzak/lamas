@@ -1,0 +1,20 @@
+<h1 class="border-bottom">Suppression de compte</h1>
+
+<div class="bg-light" style="padding:3%; border-radius:7%">
+    <div>
+    <p>Êtes-vous sûr de vouloir faire ça ?</p>
+        <p>Il existe peut-être des solutions pour résoudre vos problèmes :</p>
+        <ul>
+            <li>Pour changer votre numéro de téléphone, email ou autres : <a href="">mettez à jour vos informations personnelles</a></li>
+            <li>Pour modifier votre mot de passe : <a href="">rendez-vous ici</a></li>
+            <li>Si vous rencontrez des difficultés sur notre site : <a href="">contactez-nous</a></li>
+            <li>Vous recevez trop de notifications : <a href="">gérez vos notifications</a></li>
+        </ul>
+    </div>
+    {# <div> #}
+        <p>Si malgré tout vous voulez supprimer votre compte, nous en sommes désolés.</p> <!-- Cependant, afin que nous puissions nous améliorer, merci de répondre à ce court formulaire</p> -->
+    {# </div> #}
+    <div>
+       <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-outline-danger">Supprimer mon compte</a>
+    </div>
+</div>

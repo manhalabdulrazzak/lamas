@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {# {{ parent()}}
+    {{ encore_entry_link_tags('event') }} #}
+{% endblock %}
+{% block body %}
+    <div class="container hauteurprovisoire" style="font-family: 'Roboto', sans-serif;">
+        <div class="row bg-light">
+
+            <div class="col-3 border-right border-secondary" style="align-self : center; text-align : center;">
+                <h3 class="text-secondary" style="font-family: 'Concert One', cursive;">Filtre en construction</h3>
+            </div>
+
+            <div class="col-9">
+                {% for event in event %}
+                    <div class="bg-white rounded shadow p-3 mb-5 rounded" style="margin : 2em; border : 3px solid yellow;
+                                                                                 border-left : 20px solid yellow;                                                                             
+                                                                                 padding : 0 !important;
+                                                                                 overflow : hidden ; ">
+                         
+                        <div class="col-2" style='position : relative;'>
+                             <img src="/image/Bar1.jpg" style="  max-width: 100%;                                                
+                                                                  position : absolute;
+                                                                  opacity : 0.4;
+                                                                  top : 0;
+                                                                  left : 0;
+                                                                  ">
+                        </div> 
+
+                        <div class="row" style="padding-left : 1em; padding-right : 1em;">
+                            
+
+                            <div class="col-8"> 
+                                <a href=" {{ path('event_show', {'id': event.id}) }}" class="stretched-link"></a>                             
+                                <div class="row">
+                                    <h3 class='col-9 text-center pb-2 text-danger' style="font-family: 'Concert One', cursive;">
+                                        {{ event.nameEvent }}
+                                    </h3>
+                                    <div class="col-6 align-self-start p-0">
+                                        
+                                        <p class="mb-0"> <span style="font-weight : bold;">Date :</span>
+                                        {{ event.dateEvent ? event.dateEvent|date('d-m-Y') : '' }}</p>
+
+                                        <p class="mb-0"><span style="font-weight : bold;">De</span> {{ event.startHourEvent ? event.startHourEvent|date('H:i') : '' }} <span style="font-weight : bold;">à</span> 
+                                        {{ event.endHourEvent ? event.endHourEvent|date('H:i') : '' }}</p>
+                                    </div>
+
+                                    <div class="col-6 align-center-start">
+                                        <p class="mb-0"><span style="font-weight : bold;">Lieux :</span> {{ event.locationEvent }}</p>
+
+                                        {% if event.checkAvgAgeEvent %}
+                                            <p class="mb-0"><span style="font-weight : bold;">Age souhaité :</span></p>
+                                                <p class="mb-0">De {{ event.minAgeEvent }} ans
+                                                à {{ event.maxAgeEvent }} ans</p>
+                                        {% endif %}  
+
+                                        <p class="mb-0"> <span style="font-weight : bold;">Place disponible :</span> {{ event.subPlayerEvent }} / {{ event.maxPlayerEvent }}</p>                                   
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="col-4 border-left border-secondary align-self-center">
+                            {{ event.descriptionEvent }}                           
+                        </div>
+                    </div>
+                </div>         
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

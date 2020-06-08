@@ -1,0 +1,63 @@
+{% block stylesheets %}
+    {# {{ encore_entry_link_tags('header') }} #}
+{% endblock %}
+
+{% block body %}
+<nav
+	class="navbar navbar-expand-lg navbar-light header-custom">
+	<!-- Logo NavBar -->
+
+
+ <!-- Dans ce bloc, on fait apparaître (ou non) la photo de l'utilisateur si en a une personelle et si il est connecté -->
+	<div class="col col-6">
+		<a class="navbar-brand " href="{{path('home')}}">
+			{% if app.user != null and app.user.pictureUser != null %}
+				<img class="size-custom-logo" src="{{(app.user.pictureUser)}}">
+			{% elseif app.user != null and app.user.pictureUser == null %}
+				<img class="size-custom-logo" src="https://image.shutterstock.com/image-vector/man-avatar-icon-black-color-600w-1506435158.jpg">
+			{% else %}
+
+			{% endif %}
+		</a>
+	</div>
+
+	<div class="col col-5 custom-size-col-5">
+		<div class="col">
+			<li class="nav-item nav-item-custom">
+				<form class="form-inline my-2 my-lg-0 search-custom" action="{{path('event_index')}}">
+					<input class="form-control mr-sm-2 search-custom-disabled" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0 button-custom-search" type="submit">
+						<i class="fas fa-search search-color"></i>
+					</button>
+				</form>
+			</li>
+		</div>
+
+		<!-- Dans ce bloc, on modifie le href du lien si l'utilisateur est connecté ou non-->
+		<div class="col">
+			<li class="nav-item nav-item-custom">
+				<a class="nav-link a-custom" href="{% if app.user %} {{path('event_new')}} {% else %} {{path('app_login')}} {% endif %}" tabindex="-1" aria-disabled="true">Créer<i class="fas fa-plus-circle add-custom"></i></a>
+			</li>
+		</div>
+
+		<!-- Dans ce bloc, on modifie les href et l'indication du lien si l'utilisateur est connecté ou non-->
+		<div class="col">
+            <li class="nav-item nav-item-custom profil-connected-custom">
+                <a class="nav-link" href="{{ path('home')}}"} tabindex="-1" aria-disabled="true">
+                    <ul>
+						{% if app.user != null %}
+                        	<li><a href="{{ path('user_index', {'id': app.user.id }) }}">Editer Mon profil</a></li>
+						{% endif %}
+
+						{% if app.user != null %}						
+                       		<li><a href="{{path('app_logout')}}">Se Déconnecter</a></li>
+						{% else %}
+							<li><a href="{{path('app_login')}}">Se Connecter</a></li>
+						{% endif %}
+                    </ul>
+                </a>
+            </li>
+        </div>
+	</div>
+</nav>
+{% endblock %}

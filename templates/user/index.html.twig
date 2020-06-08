@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row" style="margin-top:2%;" >
+            <div class="col-3 border-right">
+                <article class="btn btn-light border border-dark informations_personnelles_title" style="width:250px; margin: 10% 0 6% 0; cursor:pointer;">
+                    <a href='' class="text-dark" style="text-decoration:none">Informations Personnelles</a>
+                </article>
+                <article class="btn btn-light border border-dark verifications_title" style="width:250px; margin: 6% 0; cursor:pointer;">
+                    <a href='' class="text-dark disabled" style="text-decoration:none">Vérifications</a>
+                </article>
+                <article class="btn btn-light border border-dark parametres_de_notification_title" style="width:250px; margin: 6% 0; cursor:pointer;">
+                    <a href='' class="text-dark" style="text-decoration:none">Paramètres de Notifications</a>
+                </article>
+                <article class="btn btn-light border border-dark historique_evennement_title" style="width:250px; margin: 6% 0; cursor:pointer;">
+                    <a href='' class="text-dark disabled" style="text-decoration:none">Historique Evènnement</a>
+                </article>
+                <article class="btn btn-light border border-dark modification_password_title" style="width:250px; margin: 6% 0 40% 0; cursor:pointer;">
+                    <a href='' class="text-dark" style="text-decoration:none">Modification Mot de Passe</a>
+                </article>
+                <article class="btn btn-light border border-danger delete_account_title" style="width:250px; margin: 6% 0; cursor:pointer;">
+                    <a href='' class="text-dark" style="text-decoration:none">Supprimer mon compte</a>
+                </article>
+            </div>
+            <div class="col-9 informations_personnelles_div" style="display:block">
+                {{ include('user_pages/informations_personnelles.html.twig') }}
+            </div>
+            <div class="col-9 verifications_div" style="display:none">
+                {# {{ include('user_pages/index.html.twig') }} #}
+            </div>
+            <div class="col-9 parametres_de_notification_div" style="display:none">
+                {# {{ include('user_pages/index.html.twig') }} #}
+            </div>
+            <div class="col-9 modification_password_div" style="display:block">
+                {{ include('user_pages/modification_password.html.twig') }}
+            </div>
+            <div class="col-9 delete_account_div" style="display:block">
+                {{ include('user_pages/delete_account.html.twig') }}
+            </div>
+        </div>           
+    </div>
+
+     {% block javascripts %}
+    <script src="/js/jquery.js"></script>
+    <script>
+        
+        var informations_personnelles_title = $('.informations_personnelles_title'),
+            verifications_title = $('.verifications_title'),
+            parametres_de_notification_title = $('.parametres_de_notification_title'),
+            modification_password_title = $('.modification_password_title'),
+            delete_account_title = $('.delete_account_title');
+
+        var informations_personnelles_div = $('.informations_personnelles_div'),
+            verifications_div = $('.verifications_div'),
+            parametres_de_notification_div = $('.parametres_de_notification_div'),
+            modification_password_div = $('.modification_password_div'),
+            delete_account_div = $('.delete_account_div');
+
+        $(verifications_div).hide();
+        $(parametres_de_notification_div).hide();
+        $(modification_password_div).hide();
+        $(delete_account_div).hide();
+
+        $(informations_personnelles_title).click(function(){
+            $(informations_personnelles_div).show();
+            $(verifications_div).hide();
+            $(parametres_de_notification_div).hide();
+            $(modification_password_div).hide();
+            $(delete_account_div).hide();
+        });
+
+        $(verifications_title).click(function(){
+            $(informations_personnelles_div).hide();
+            $(verifications_div).show();
+            $(parametres_de_notification_div).hide();
+            $(modification_password_div).hide();
+            $(delete_account_div).hide();
+        });
+
+        $(parametres_de_notification_title).click(function(){
+            $(informations_personnelles_div).hide();
+            $(verifications_div).hide();
+            $(parametres_de_notification_div).show();
+            $(modification_password_div).hide();
+            $(delete_account_div).hide();
+        });
+
+        $(modification_password_title).click(function(){
+            $(informations_personnelles_div).hide();
+            $(verifications_div).hide();
+            $(parametres_de_notification_div).hide();
+            $(modification_password_div).show();
+            $(delete_account_div).hide();
+        });
+
+        $(delete_account_title).click(function(){
+            $(informations_personnelles_div).hide();
+            $(verifications_div).hide();
+            $(parametres_de_notification_div).hide();
+            $(modification_password_div).hide();
+            $(delete_account_div).show();
+        });
+    </script>
+    {% endblock %}
+{% endblock %}

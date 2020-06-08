@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Stylesheet to reset every default files Ex : padding set to 0 in the body, Ul list type to 0 etc...-->
+	{#{{ encore_entry_link_tags('homepage') }} #}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid homepage">
+		<div class="homepage-image"></div>
+		<div class="button-homepage">
+			<a href="{{path('event_index')}}#anchorevent" class="btn btn-primary">Voir les événements<i class="fas fa-caret-right"></i>
+			</a>
+		</div>
+	</div>
+
+	<div id="anchorevent" class="container-fluid homepage-event">
+	<!--
+		<div class="bloc-event">
+			
+			<div class="folder">
+				<div class="button-create-join">
+		
+					<a href="" class="btn btn-primary">Créer</a>
+					<a href="" class="btn btn-primary">Rejoindre</a>
+				</div>		
+			</div>
+			
+		</div> -->
+	</div>
+{% endblock %}
+
+
+
+

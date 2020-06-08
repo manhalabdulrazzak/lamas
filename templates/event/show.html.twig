@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div>
+                    <h3>{{ event.name }}</h3>
+
+                    <p>Organisateur :
+                    {{ event.firstNameLeader }}</p>
+
+                    <p>{{ event.date ? event.date|date('Y-m-d') : '' }}</p>
+
+                    <p>Heure de début : 
+                    {{ event.startHour ? event.startHour|date('H:i:s') : '' }}</p>
+
+
+                    <p>Heure de fin :
+                    {{ event.endHour ? event.endHour|date('H:i:s') : '' }}</p>
+                </div>
+
+                <p>Lieux
+                {{ event.location }}</p>
+                
+                <p>{{ event.subPlayer }} / {{ event.maxPlayer }}</p>
+
+                {% if event.checkAvgAge %}
+                    <p class="mb-0"><span style="font-weight : bold;">Age souhaité :</span>
+                        De {{ event.minAge }} 
+                        à {{ event.maxAge }} </p>
+                {% endif %}  
+
+                <p>{{ event.description }}</p>
+
+
+                
+                <a href="{{ path('event_index') }}">Retour</a>
+            </div>
+
+            <div class="col-8" style="padding : 2%;">
+                <img src="/image/Bar1.jpg" style="height : auto;
+                                                  max-width : 100%;">
+            </div>
+        </div>    
+    </div>
+{% endblock %}

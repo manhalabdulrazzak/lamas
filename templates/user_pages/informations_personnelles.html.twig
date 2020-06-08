@@ -1,0 +1,71 @@
+<h1 class="border-bottom">Informations Personnelles</h1>
+<form method="POST" action="{{ path('user_edit', {'id': user.id}) }}">
+    <div class="bg-light" style="padding:3%; border-radius:7%">
+        <div class="row d-flex justify-content-center" style="margin-top:5%;">
+            <div class="col-5" style="margin-right:5%">
+                <div class="text-center">
+                    <img style='width:150px; height:150px;' class="rounded mx-auto d-block" src='{{ user.pictureUser }}'>
+                    <p class="picture_form"> {{ form_widget(form.picture_user) }} </p>
+                    <p class="text-primary text-center">Modifier</p>
+                </div>
+                <div class="row">
+                    <p class="col-4">Nom<p>
+                    {{ form_errors(form.name_user) }}
+                    {{ form_widget(form.name_user) }}
+                </div>
+
+                <div class="row" style="margin-top:3%;">
+                    <p class="col-4">Prénom</p>
+                    {{ form_errors(form.firstname_user) }}
+                    {{ form_widget(form.firstname_user) }}
+                </div>
+
+                <div class="row" style="margin-top:3%;">
+                    <p class="col-4">Date de Naissance</p>
+                    {{ form_widget(form.birthday_user) }}
+                </div>
+            
+                <div class="row" style="margin-top:3%;">
+                    <p class="col-4">Email</p>
+                    {{ form_widget(form.mail_user) }} 
+                </div>
+                
+                <div class="row" style="margin-top:3%;">
+                    <p class="col-4">Téléphone</p>
+                    {{ form_widget(form.phone_user) }}
+                </div>        
+            </div>
+
+            <div class="col-5">
+                <div class="">
+                    <p>Biographie</p>
+                    <div>{{ form_widget(form.biography_user,{'attr':{'cols':42, 'rows':5}}) }}</div>
+                </div>
+                
+                <div class="">
+                    <p>Intérêts</p>
+                    <div>{{ form_widget(form.story_user,{'attr':{'cols':42, 'rows':4}}) }}</div>
+                </div>
+
+                <div class="row" style="margin-top:15%;">
+                    <p class="col-5">Adresse</p>
+                    {{ form_widget(form.address_user) }}
+                </div>
+
+                <div class="row" style="margin-top:3%;">
+                    <p class="col-5">Ville</p>
+                    {{ form_widget(form.city_user) }}
+                </div>
+
+                <div class="row" style="margin-top:3%;">
+                    <p class="col-5">Code Postal</p>
+                    {{ form_widget(form.postalCode_user) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center" style="margin-top:5%;">
+            <button class="btn btn-light border border-dark">Sauvegarder</button>
+        </div>
+    </div>
+</form>

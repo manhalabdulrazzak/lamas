@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <form action="POST" action="{{ path('event_new') }}">
+            <label >Titre</label>
+            <input type="text">
+
+            <label>Lieu</label>
+            <input type="text">
+
+            <label>Date</label>
+            <input type="date">
+
+            <label>Début</label>
+            <input type="time">
+
+            <label >Fin</label>
+            <input type="time">
+
+            <label >Nombre de joueur max</label>
+            <input type="number">
+
+            <label >Tranche d'âge</label>
+            <input type="checkbox">
+
+            <label >Âge minimum</label>
+            <input type="number">
+
+            <label >Âge maximum</label>
+            <input type="number">
+
+            <label >Organisateur</label>
+            <input type="text">
+
+            <label >Description</label>
+            <input type="textarea">
+
+            <button>Publier</button>
+        </form>
+
+        <a href="{{ path('event_index') }}">Retour</a>
+{% endblock %}
